@@ -26,7 +26,7 @@ void display_symtab();
 #endif
 ```
 
-Write the implementation of these functions in `symtab.c` and test it in `main.c`.
+Write the implementation of these functions in `symtab.c` and test it in `lab2.c`.
 
 ## Opcode Table
 Tells us what the machine knows.
@@ -63,7 +63,7 @@ char* search_optab(char *mnemonic); // Returns machine code or NULL if not found
 
 Write the implementation of these functions in `optab.c` and test it in `lab2.c`.
 
-## Sample `main.c`
+## Sample `lab2.c`
 ```C
 //lab2.c
 #include <stdio.h>
@@ -118,6 +118,11 @@ symtab.o: symtab.c symtab.h
 optab.o: optab.c optab.h
 	gcc -c optab.c
 
+test: lab2
+	./lab2 > my_output.txt
+	@diff -w -y --suppress-common-lines test_out.txt my_output.txt && echo "✅ Test Passed!" || echo "❌ Test Failed! See differences above."
+	@rm my_output.txt
+
 clean:
 	rm *.o lab2
 ```
@@ -145,3 +150,5 @@ STA -> 0C
 ADD -> 18
 XYZ -> Invalid Opcode
 ```
+
+To test your implementation, compare the output of your program with the expected output above by running `make test`.
