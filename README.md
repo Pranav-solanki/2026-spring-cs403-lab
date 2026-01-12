@@ -19,7 +19,7 @@ Then we **profile** (identify bottlenecks), and rewrite only the critical parts 
 
 ## Labs Schedule
 
-### Lab 1: The Symbol Table
+### Lab 1: Symbol Table
 * **Concepts:** Hash Tables and Linear Probing.
 * **Task:** Implement a fixed-size SymTab in C that handles insertions, collisions, and lookups.
 * **Skills:** Refresh pointers and structs in C. Writing own header files.
@@ -36,3 +36,16 @@ Then we **profile** (identify bottlenecks), and rewrite only the critical parts 
 * **Task:** Compile the C modules into a Shared Object library (`.so`). Use `ctypesgen` to generate Python wrappers for it. Write a Python test script to verify the library and cross-check with a C test script.
 * **Skills:** Creating Shared Libraries and interfacing C with Python. Automating cross-language builds and tests with Makefiles.
 
+### Lab 4: Assembler Pass 1
+
+### Lab 5: Assembler Pass 2
+
+### Lab 6: Macro Processor
+
+### Lab 7: Lexical Analyzer
+
+### Lab 8: Parser
+
+### Lab 9: Intermediate Code Generation and Optimization
+
+### Lab 10: Linker and Loader
