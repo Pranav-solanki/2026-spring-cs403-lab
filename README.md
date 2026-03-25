@@ -45,12 +45,12 @@ Then we **profile** (identify bottlenecks), and rewrite only the critical parts 
 * **Task:** Implement the second pass of the assembler to generate object code from the intermediate representation produced in Pass 1.
 * **Skills:** Addressing Modes in Assembly and Simulating SIC Machine
 
-## Roadmap
-
 ### Lab 6: MiniC Lexer
 * **Concepts:** Regular Expressions and Language Design
 * **Task:** Implement a lexical analyzer with SLY that reads MiniC source code and produces a stream of tokens.
 * **Skills:** Lexical Analysis and Tokenization with SLY.
+
+## Roadmap
 
 ### Lab 7: Parser
 

@@ -1,0 +1,22 @@
+TOKEN TYPE           VALUE                LINE 
+--------------------------------------------------
+VOID                 void                 1    
+ID                   main                 1    
+LPAREN               (                    1    
+RPAREN               )                    1    
+LBRACE               {                    1    
+INT                  int                  2    
+ID                   x                    2    
+SEMI                 ;                    2    
+ID                   x                    3    
+ASSIGN               =                    3    
+NUMBER               10                   3    
+AT                   @                    3    
+NUMBER               5                    3    
+SEMI                 ;                    3    
+INT                  int                  4    
+ID                   y                    4    
+ASSIGN               =                    4    
+NUMBER               20                   4    
+SEMI                 ;                    4    
+RBRACE               }                    5    
