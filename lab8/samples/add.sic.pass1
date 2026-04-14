@@ -1,0 +1,93 @@
+0		START	0
+0		LDA	C_0
+3		STA	__sp__
+6	main	LDA	C_10
+9		STA	n
+C		LDA	C_1
+F		STA	i
+12		LDA	C_0
+15		STA	sum
+18		LDA	C_48
+1B		STA	ascii_zero
+1E	L0	LDA	i
+21		COMP	n
+24		JLT	TRUE_0
+27		LDA	C_0
+2A		J	END_0
+2D	TRUE_0	LDA	C_1
+30	END_0	STA	t1
+33		LDA	t1
+36		COMP	C_0
+39		JEQ	L1
+3C		LDA	sum
+3F		ADD	i
+42		STA	t2
+45		LDA	t2
+48		STA	sum
+4B		LDA	i
+4E		ADD	C_1
+51		STA	t3
+54		LDA	t3
+57		STA	i
+5A		J	L0
+5D	L1	LDA	sum
+60		DIV	C_10
+63		STA	t4
+66		LDA	t4
+69		STA	first_digit
+6C		LDA	first_digit
+6F		MUL	C_10
+72		STA	t5
+75		LDA	sum
+78		SUB	t5
+7B		STA	t6
+7E		LDA	t6
+81		STA	second_digit
+84		LDA	first_digit
+87		ADD	ascii_zero
+8A		STA	t7
+8D		LDA	t7
+90		WD	OUTDEV
+93		LDA	second_digit
+96		ADD	ascii_zero
+99		STA	t8
+9C		LDA	t8
+9F		WD	OUTDEV
+A2		LDA	C_0
+A5		STA	__ret_val__
+A8	EOP	J	EOP
+AB	DISPATCH	LDA	DISP_VAR
+AE		COMP	C_0
+B1		JEQ	L0
+B4		COMP	C_1
+B7		JEQ	L1
+BA	EOPSAFE	J	EOPSAFE
+BD	X_TEMP	RESW	1
+C0	DISP_VAR	RESW	1
+C3	INDEV	BYTE	X'F1'
+C4	OUTDEV	BYTE	X'05'
+C5	__s__	RESW	1000
+C7D	__sp__	RESW	1
+C80	__ret_val__	RESW	1
+C83	t0	RESW	1
+C86	n	RESW	1
+C89	i	RESW	1
+C8C	sum	RESW	1
+C8F	ascii_zero	RESW	1
+C92	t1	RESW	1
+C95	t2	RESW	1
+C98	t3	RESW	1
+C9B	first_digit	RESW	1
+C9E	t4	RESW	1
+CA1	second_digit	RESW	1
+CA4	t5	RESW	1
+CA7	t6	RESW	1
+CAA	t7	RESW	1
+CAD	t8	RESW	1
+CB0	x	RESW	1
+CB3	C_0	WORD	0
+CB6	C_1	WORD	1
+CB9	C_3	WORD	3
+CBC	C_10	WORD	10
+CBF	C_48	WORD	48
+		END	START

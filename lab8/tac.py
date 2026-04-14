@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from ast_nodes import ASTNode, Id, Number, Program, ReturnStmt, VarDecl, ArrayDecl, ArrayAccess, FuncDecl, ReadStmt, WhileStmt, WriteStmt, GotoStmt, LabelStmt, Block, IfStmt, FuncCall, Assign
+from ast_nodes import ASTNode, Char_Literal, Id, Number, Program, ReturnStmt, String_Literal, VarDecl, ArrayDecl, ArrayAccess, FuncDecl, ReadStmt, WhileStmt, WriteStmt, GotoStmt, LabelStmt, Block, IfStmt, FuncCall, Assign
 
 @dataclass
 class TACInstruction:
@@ -12,7 +12,9 @@ class TACInstruction:
         arg1 = self.arg1 if self.arg1 is not None else ''
         arg2 = self.arg2 if self.arg2 is not None else ''
         result = self.result if self.result is not None else ''
-        if self.op == '=':
+        if self.op == 'U-':
+            return f"{result} = -{arg1}".strip()
+        elif self.op == '=':
             return f"{result} = {arg1}".strip()
         elif self.op in ['goto', 'label', 'param', 'call', 'return']:
             # Format control flow/function instructions
@@ -25,7 +27,7 @@ class TACInstruction:
             # For read, the target is in 'result'. For write, the value is in 'arg1'.
             target = self.result if self.op == 'read' else self.arg1
             return f"{self.op} {target}".strip()
-        elif self.op in ['declare_int', 'declare_int_array']:
+        elif self.op in ['declare_int', 'declare_int_array', 'declare_char', 'declare_char_array']:
             return f"{self.op} {result} {arg1} {arg2}".strip()
         elif self.op in ['[]=']:
             return f"{result}[{arg1}] = {arg2}".strip()
@@ -121,6 +123,12 @@ class TACProgram:
     def visit_Id(self, node: Id) -> str:
         return node.name
     
+    def visit_Char_Literal(self, node: Char_Literal) -> str:
+        return f"'{node.value}'"
+    
+    def visit_String_Literal(self, node: String_Literal) -> str:
+        return f'"{node.value}"'
+    
     
     # --- Declarations ---
     def visit_VarDecl(self, node: VarDecl):
@@ -133,6 +141,10 @@ class TACProgram:
         self.current_func_vars = [p.var_name for p in node.params]
         self.current_func_vars.extend(self._get_local_vars(node.body))
         self.current_func_ret_addr = self.new_temp('int')
+
+        # define locations for arguments
+        for param in node.params:
+            self.generate(param)  # This will emit the declaration for the parameter
 
         # Main doesn't have a caller to pop arguments from
         if node.func_name != 'main':
@@ -161,6 +173,13 @@ class TACProgram:
         result = self.new_temp("int") # Assuming all binary operations result in an integer for simplicity
         self.emit(node.op, left, right, result)
         return result
+    def visit_UnaryOp(self, node):
+        operand = self.generate(node.operand)
+        result = self.new_temp("int") # Assuming unary operations also result in an integer
+        assert(node.op in ['-'])  # Only handling negation for now
+        self.emit(f'U{node.op}', operand, None, result)
+        return result
+
     
     def visit_Assign(self, node):
         value = self.generate(node.value)
@@ -251,7 +270,7 @@ class TACProgram:
         self.emit('+', self.STACK_POINTER_NAME, '1', self.STACK_POINTER_NAME)
         
         # 4. JUMP
-        self.emit('goto', node.func_name, None, None) 
+        self.emit('goto', None, None, node.func_name) 
 
         # 5. RESUME Execution
         self.emit('label', None, None, next_instruction_label)
@@ -281,10 +300,27 @@ class TACProgram:
             self.emit('goto_label_id', self.current_func_ret_addr, None, None)
         
 
-
-if __name__ == "__main__":
+def get_tac(source_path, tac_path):
     from parser import MiniCParser
     from lexer import MiniCLexer
+    lexer = MiniCLexer()
+    parser = MiniCParser()
+
+    with open(source_path, 'r') as f:
+        text = f.read()
+
+    tokens = lexer.tokenize(text)
+    ast = parser.parse(tokens)
+    
+    program = TACProgram()
+    if ast:
+        program.generate(ast)
+        with open(tac_path, 'w') as f:
+            f.write(str(program))
+        print(f"TAC generation successful! TAC code written to: {tac_path}")
+
+
+if __name__ == "__main__":
     import sys
     import pprint
     
@@ -292,20 +328,6 @@ if __name__ == "__main__":
         print("Usage: python tac.py <source.c>")
         sys.exit(1)
 
-    lexer = MiniCLexer()
-    parser = MiniCParser()
-
-    with open(sys.argv[1], 'r') as f:
-        text = f.read()
-
-    tokens = lexer.tokenize(text)
-    ast = parser.parse(tokens)
-    program = TACProgram()
-
-    if ast:
-        print("Abstract Syntax Tree:")
-        pprint.pprint(ast)
-        
-        program.generate(ast)
-        print("\nGenerated Three-Address Code:")
-        print(program)
+    source_path = sys.argv[1]
+    tac_path = source_path.rsplit('.', 1)[0] + ".tac"
+    get_tac(source_path, tac_path)

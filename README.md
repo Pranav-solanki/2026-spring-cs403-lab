@@ -1,6 +1,6 @@
 # CS 403: System Software (Spring 2026)
 
-> **Lab assignments and reference implementations for CS403. This Readme will evolve as the course progresses.**
+> **Lab assignments and reference implementations for the 2026 edition of CS403 at IIIT Surat. This Readme will evolve as the course progresses.**
 
 ## Overview
 Unlike traditional approaches that use a single language, we will use a multi-language strategy in this course.
@@ -50,11 +50,19 @@ Then we **profile** (identify bottlenecks), and rewrite only the critical parts 
 * **Task:** Implement a lexical analyzer with SLY that reads MiniC source code and produces a stream of tokens.
 * **Skills:** Lexical Analysis and Tokenization with SLY.
 
-## Roadmap
 
 ### Lab 7: Parser
+* **Concepts:** Context-Free Grammars and Abstract Syntax Trees (AST)
+* **Task:** Implement a parser that takes the tokens from the lexer and constructs an AST
+* **Skills:** Parsing with SLY and AST Construction
 
 ### Lab 8: Intermediate Code Generation
+* **Concepts:** Three-Address Code (TAC)
+* **Task:** Implement a code generator that traverses the AST and produces TAC
+* **Skills:** Tree Traversal and Code Generation
+
+## Roadmap
+
 
 ### Lab 9: Optimization
 

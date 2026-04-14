@@ -2,7 +2,7 @@ import sys
 from sly import Parser
 import pprint
 from lexer import MiniCLexer
-from ast_nodes import Program, VarDecl, ArrayDecl, FuncDecl, Block, IfStmt, WhileStmt, ReturnStmt, BinOp, Assign, Number, ExprStmt, Id, ArrayAccess, ReadStmt, WriteStmt, FuncCall, GotoStmt, LabelStmt
+from ast_nodes import Char_Literal, Program, String_Literal, VarDecl, ArrayDecl, FuncDecl, Block, IfStmt, WhileStmt, ReturnStmt, BinOp, Assign, Number, ExprStmt, Id, ArrayAccess, ReadStmt, WriteStmt, FuncCall, GotoStmt, LabelStmt, UnaryOp
 from tac import TACProgram
 
 class MiniCParser(Parser):
@@ -203,11 +203,11 @@ class MiniCParser(Parser):
         
     @_('CHAR_LITERAL')
     def expr(self, p):
-        return str(p.CHAR_LITERAL)
-        
+        return Char_Literal(str(p.CHAR_LITERAL))
+    
     @_('STRING_LITERAL')
     def expr(self, p):
-        return str(p.STRING_LITERAL)
+        return String_Literal(str(p.STRING_LITERAL))
 
     @_('ID LPAREN arg_list RPAREN',
        'ID LPAREN RPAREN')
@@ -249,7 +249,7 @@ if __name__ == '__main__':
 
     if ast:
         pprint.pprint(ast)
-        program.generate(ast)
+        # program.generate(ast)
 
-        print("\nGenerated Three-Address Code:")
-        print(program)
+        # print("\nGenerated Three-Address Code:")
+        # print(program)

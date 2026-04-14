@@ -1,0 +1,479 @@
+0		START	0
+0		J	main
+3		LDA	C_0
+6		STA	__sp__
+9	print_int	LDA	__sp__
+C		SUB	C_1
+F		STA	__sp__
+12		LDA	__sp__
+15		MUL	C_3
+18		STA	X_TEMP
+1B		LDX	X_TEMP
+1E		LDA	__s__,X
+21		STA	t0
+24		LDA	__sp__
+27		SUB	C_1
+2A		STA	__sp__
+2D		LDA	__sp__
+30		MUL	C_3
+33		STA	X_TEMP
+36		LDX	X_TEMP
+39		LDA	__s__,X
+3C		STA	y
+3F		LDA	y
+42		COMP	C_10
+45		JLT	TRUE_0
+48		LDA	C_0
+4B		J	END_0
+4E	TRUE_0	LDA	C_1
+51	END_0	STA	t1
+54		LDA	t1
+57		COMP	C_0
+5A		JEQ	L0
+5D		LDA	y
+60		ADD	C_48
+63		STA	t2
+66		LDA	t2
+69		WD	OUTDEV
+6C		J	L1
+6F	L0	LDA	y
+72		DIV	C_10
+75		STA	t3
+78		LDA	t3
+7B		STA	rem
+7E		LDA	__sp__
+81		MUL	C_3
+84		STA	X_TEMP
+87		LDX	X_TEMP
+8A		LDA	y
+8D		STA	__s__,X
+90		LDA	__sp__
+93		ADD	C_1
+96		STA	__sp__
+99		LDA	__sp__
+9C		MUL	C_3
+9F		STA	X_TEMP
+A2		LDX	X_TEMP
+A5		LDA	last_digit
+A8		STA	__s__,X
+AB		LDA	__sp__
+AE		ADD	C_1
+B1		STA	__sp__
+B4		LDA	__sp__
+B7		MUL	C_3
+BA		STA	X_TEMP
+BD		LDX	X_TEMP
+C0		LDA	rem
+C3		STA	__s__,X
+C6		LDA	__sp__
+C9		ADD	C_1
+CC		STA	__sp__
+CF		LDA	__sp__
+D2		MUL	C_3
+D5		STA	X_TEMP
+D8		LDX	X_TEMP
+DB		LDA	t0
+DE		STA	__s__,X
+E1		LDA	__sp__
+E4		ADD	C_1
+E7		STA	__sp__
+EA		LDA	__sp__
+ED		MUL	C_3
+F0		STA	X_TEMP
+F3		LDX	X_TEMP
+F6		LDA	rem
+F9		STA	__s__,X
+FC		LDA	__sp__
+FF		ADD	C_1
+102		STA	__sp__
+105		LDA	__sp__
+108		MUL	C_3
+10B		STA	X_TEMP
+10E		LDX	X_TEMP
+111		LDA	C_2
+114		STA	__s__,X
+117		LDA	__sp__
+11A		ADD	C_1
+11D		STA	__sp__
+120		J	print_int
+123	L2	LDA	__sp__
+126		SUB	C_1
+129		STA	__sp__
+12C		LDA	__sp__
+12F		MUL	C_3
+132		STA	X_TEMP
+135		LDX	X_TEMP
+138		LDA	__s__,X
+13B		STA	t0
+13E		LDA	__sp__
+141		SUB	C_1
+144		STA	__sp__
+147		LDA	__sp__
+14A		MUL	C_3
+14D		STA	X_TEMP
+150		LDX	X_TEMP
+153		LDA	__s__,X
+156		STA	rem
+159		LDA	__sp__
+15C		SUB	C_1
+15F		STA	__sp__
+162		LDA	__sp__
+165		MUL	C_3
+168		STA	X_TEMP
+16B		LDX	X_TEMP
+16E		LDA	__s__,X
+171		STA	last_digit
+174		LDA	__sp__
+177		SUB	C_1
+17A		STA	__sp__
+17D		LDA	__sp__
+180		MUL	C_3
+183		STA	X_TEMP
+186		LDX	X_TEMP
+189		LDA	__s__,X
+18C		STA	y
+18F		LDA	__ret_val__
+192		STA	t4
+195		LDA	rem
+198		MUL	C_10
+19B		STA	t5
+19E		LDA	y
+1A1		SUB	t5
+1A4		STA	t6
+1A7		LDA	t6
+1AA		STA	last_digit
+1AD		LDA	__sp__
+1B0		MUL	C_3
+1B3		STA	X_TEMP
+1B6		LDX	X_TEMP
+1B9		LDA	y
+1BC		STA	__s__,X
+1BF		LDA	__sp__
+1C2		ADD	C_1
+1C5		STA	__sp__
+1C8		LDA	__sp__
+1CB		MUL	C_3
+1CE		STA	X_TEMP
+1D1		LDX	X_TEMP
+1D4		LDA	last_digit
+1D7		STA	__s__,X
+1DA		LDA	__sp__
+1DD		ADD	C_1
+1E0		STA	__sp__
+1E3		LDA	__sp__
+1E6		MUL	C_3
+1E9		STA	X_TEMP
+1EC		LDX	X_TEMP
+1EF		LDA	rem
+1F2		STA	__s__,X
+1F5		LDA	__sp__
+1F8		ADD	C_1
+1FB		STA	__sp__
+1FE		LDA	__sp__
+201		MUL	C_3
+204		STA	X_TEMP
+207		LDX	X_TEMP
+20A		LDA	t0
+20D		STA	__s__,X
+210		LDA	__sp__
+213		ADD	C_1
+216		STA	__sp__
+219		LDA	__sp__
+21C		MUL	C_3
+21F		STA	X_TEMP
+222		LDX	X_TEMP
+225		LDA	last_digit
+228		STA	__s__,X
+22B		LDA	__sp__
+22E		ADD	C_1
+231		STA	__sp__
+234		LDA	__sp__
+237		MUL	C_3
+23A		STA	X_TEMP
+23D		LDX	X_TEMP
+240		LDA	C_3
+243		STA	__s__,X
+246		LDA	__sp__
+249		ADD	C_1
+24C		STA	__sp__
+24F		J	print_int
+252	L3	LDA	__sp__
+255		SUB	C_1
+258		STA	__sp__
+25B		LDA	__sp__
+25E		MUL	C_3
+261		STA	X_TEMP
+264		LDX	X_TEMP
+267		LDA	__s__,X
+26A		STA	t0
+26D		LDA	__sp__
+270		SUB	C_1
+273		STA	__sp__
+276		LDA	__sp__
+279		MUL	C_3
+27C		STA	X_TEMP
+27F		LDX	X_TEMP
+282		LDA	__s__,X
+285		STA	rem
+288		LDA	__sp__
+28B		SUB	C_1
+28E		STA	__sp__
+291		LDA	__sp__
+294		MUL	C_3
+297		STA	X_TEMP
+29A		LDX	X_TEMP
+29D		LDA	__s__,X
+2A0		STA	last_digit
+2A3		LDA	__sp__
+2A6		SUB	C_1
+2A9		STA	__sp__
+2AC		LDA	__sp__
+2AF		MUL	C_3
+2B2		STA	X_TEMP
+2B5		LDX	X_TEMP
+2B8		LDA	__s__,X
+2BB		STA	y
+2BE		LDA	__ret_val__
+2C1		STA	t7
+2C4	L1	LDA	t0
+2C7		STA	DISP_VAR
+2CA		J	DISPATCH
+2CD	sq	LDA	__sp__
+2D0		SUB	C_1
+2D3		STA	__sp__
+2D6		LDA	__sp__
+2D9		MUL	C_3
+2DC		STA	X_TEMP
+2DF		LDX	X_TEMP
+2E2		LDA	__s__,X
+2E5		STA	t8
+2E8		LDA	__sp__
+2EB		SUB	C_1
+2EE		STA	__sp__
+2F1		LDA	__sp__
+2F4		MUL	C_3
+2F7		STA	X_TEMP
+2FA		LDX	X_TEMP
+2FD		LDA	__s__,X
+300		STA	x
+303		LDA	x
+306		MUL	x
+309		STA	t9
+30C		LDA	t9
+30F		STA	__ret_val__
+312		LDA	t8
+315		STA	DISP_VAR
+318		J	DISPATCH
+31B		LDA	t8
+31E		STA	DISP_VAR
+321		J	DISPATCH
+324	main	LDA	C_0
+327		STA	count
+32A		RD	INDEV
+32D		STA	input
+330		LDA	input
+333		SUB	C_48
+336		STA	t11
+339		LDA	t11
+33C		STA	input
+33F		LDA	__sp__
+342		MUL	C_3
+345		STA	X_TEMP
+348		LDX	X_TEMP
+34B		LDA	input
+34E		STA	__s__,X
+351		LDA	__sp__
+354		ADD	C_1
+357		STA	__sp__
+35A		LDA	__sp__
+35D		MUL	C_3
+360		STA	X_TEMP
+363		LDX	X_TEMP
+366		LDA	count
+369		STA	__s__,X
+36C		LDA	__sp__
+36F		ADD	C_1
+372		STA	__sp__
+375		LDA	__sp__
+378		MUL	C_3
+37B		STA	X_TEMP
+37E		LDX	X_TEMP
+381		LDA	t10
+384		STA	__s__,X
+387		LDA	__sp__
+38A		ADD	C_1
+38D		STA	__sp__
+390		LDA	__sp__
+393		MUL	C_3
+396		STA	X_TEMP
+399		LDX	X_TEMP
+39C		LDA	input
+39F		STA	__s__,X
+3A2		LDA	__sp__
+3A5		ADD	C_1
+3A8		STA	__sp__
+3AB		LDA	__sp__
+3AE		MUL	C_3
+3B1		STA	X_TEMP
+3B4		LDX	X_TEMP
+3B7		LDA	count
+3BA		STA	__s__,X
+3BD		LDA	__sp__
+3C0		ADD	C_1
+3C3		STA	__sp__
+3C6		LDA	__sp__
+3C9		MUL	C_3
+3CC		STA	X_TEMP
+3CF		LDX	X_TEMP
+3D2		LDA	t10
+3D5		STA	__s__,X
+3D8		LDA	__sp__
+3DB		ADD	C_1
+3DE		STA	__sp__
+3E1		LDA	__sp__
+3E4		MUL	C_3
+3E7		STA	X_TEMP
+3EA		LDX	X_TEMP
+3ED		LDA	input
+3F0		STA	__s__,X
+3F3		LDA	__sp__
+3F6		ADD	C_1
+3F9		STA	__sp__
+3FC		LDA	__sp__
+3FF		MUL	C_3
+402		STA	X_TEMP
+405		LDX	X_TEMP
+408		LDA	C_5
+40B		STA	__s__,X
+40E		LDA	__sp__
+411		ADD	C_1
+414		STA	__sp__
+417		J	sq
+41A	L5	LDA	__sp__
+41D		SUB	C_1
+420		STA	__sp__
+423		LDA	__sp__
+426		MUL	C_3
+429		STA	X_TEMP
+42C		LDX	X_TEMP
+42F		LDA	__s__,X
+432		STA	t10
+435		LDA	__sp__
+438		SUB	C_1
+43B		STA	__sp__
+43E		LDA	__sp__
+441		MUL	C_3
+444		STA	X_TEMP
+447		LDX	X_TEMP
+44A		LDA	__s__,X
+44D		STA	count
+450		LDA	__sp__
+453		SUB	C_1
+456		STA	__sp__
+459		LDA	__sp__
+45C		MUL	C_3
+45F		STA	X_TEMP
+462		LDX	X_TEMP
+465		LDA	__s__,X
+468		STA	input
+46B		LDA	__ret_val__
+46E		STA	t12
+471		LDA	__sp__
+474		MUL	C_3
+477		STA	X_TEMP
+47A		LDX	X_TEMP
+47D		LDA	t12
+480		STA	__s__,X
+483		LDA	__sp__
+486		ADD	C_1
+489		STA	__sp__
+48C		LDA	__sp__
+48F		MUL	C_3
+492		STA	X_TEMP
+495		LDX	X_TEMP
+498		LDA	C_4
+49B		STA	__s__,X
+49E		LDA	__sp__
+4A1		ADD	C_1
+4A4		STA	__sp__
+4A7		J	print_int
+4AA	L4	LDA	__sp__
+4AD		SUB	C_1
+4B0		STA	__sp__
+4B3		LDA	__sp__
+4B6		MUL	C_3
+4B9		STA	X_TEMP
+4BC		LDX	X_TEMP
+4BF		LDA	__s__,X
+4C2		STA	t10
+4C5		LDA	__sp__
+4C8		SUB	C_1
+4CB		STA	__sp__
+4CE		LDA	__sp__
+4D1		MUL	C_3
+4D4		STA	X_TEMP
+4D7		LDX	X_TEMP
+4DA		LDA	__s__,X
+4DD		STA	count
+4E0		LDA	__sp__
+4E3		SUB	C_1
+4E6		STA	__sp__
+4E9		LDA	__sp__
+4EC		MUL	C_3
+4EF		STA	X_TEMP
+4F2		LDX	X_TEMP
+4F5		LDA	__s__,X
+4F8		STA	input
+4FB		LDA	__ret_val__
+4FE		STA	t13
+501	EOP	J	EOP
+504	DISPATCH	LDA	DISP_VAR
+507		COMP	C_0
+50A		JEQ	L0
+50D		COMP	C_2
+510		JEQ	L2
+513		COMP	C_3
+516		JEQ	L3
+519		COMP	C_1
+51C		JEQ	L1
+51F		COMP	C_5
+522		JEQ	L5
+525		COMP	C_4
+528		JEQ	L4
+52B	EOPSAFE	J	EOPSAFE
+52E	X_TEMP	RESW	1
+531	DISP_VAR	RESW	1
+534	INDEV	BYTE	X'F1'
+535	OUTDEV	BYTE	X'05'
+536	__s__	RESW	1000
+10EE	__sp__	RESW	1
+10F1	__ret_val__	RESW	1
+10F4	t0	RESW	1
+10F7	y	RESW	1
+10FA	t1	RESW	1
+10FD	t2	RESW	1
+1100	last_digit	RESW	1
+1103	rem	RESW	1
+1106	t3	RESW	1
+1109	t4	RESW	1
+110C	t5	RESW	1
+110F	t6	RESW	1
+1112	t7	RESW	1
+1115	t8	RESW	1
+1118	x	RESW	1
+111B	t9	RESW	1
+111E	t10	RESW	1
+1121	input	RESW	1
+1124	count	RESW	1
+1127	t11	RESW	1
+112A	t12	RESW	1
+112D	t13	RESW	1
+1130	C_0	WORD	0
+1133	C_1	WORD	1
+1136	C_2	WORD	2
+1139	C_3	WORD	3
+113C	C_4	WORD	4
+113F	C_5	WORD	5
+1142	C_10	WORD	10
+1145	C_48	WORD	48
+		END	START

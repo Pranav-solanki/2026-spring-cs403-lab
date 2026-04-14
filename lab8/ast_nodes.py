@@ -76,6 +76,11 @@ class Assign(ASTNode):
     value: ASTNode
 
 @dataclass
+class UnaryOp(ASTNode):
+    op: str
+    operand: ASTNode
+
+@dataclass
 class BinOp(ASTNode):
     op: str
     left: ASTNode
@@ -93,3 +98,11 @@ class Id(ASTNode):
 @dataclass
 class Number(ASTNode):
     value: int
+
+@dataclass
+class Char_Literal(ASTNode):
+    value: str
+
+@dataclass
+class String_Literal(ASTNode):
+    value: str

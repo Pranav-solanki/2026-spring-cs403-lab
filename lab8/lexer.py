@@ -107,11 +107,13 @@ class MiniCLexer(Lexer):
     # Character literal (e.g. 'c')
     @_(r"'([^'\\\n]|(\\ .))'")
     def CHAR_LITERAL(self, t):
+        t.value = t.value[1:-1] # Remove the surrounding single quotes
         return t
 
     # String literal (e.g. "Hello")
     @_(r'\"([^\\\n]|(\\.))*?\"')
     def STRING_LITERAL(self, t):
+        t.value = t.value[1:-1] # Remove the surrounding double quotes
         return t
 
     # Error handling

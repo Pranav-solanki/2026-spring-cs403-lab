@@ -11,18 +11,13 @@ int print_int(int y) {
     }
 }
 
-int sq(int x) {
-    return x * x;
+int add(int a, int b) {
+    return a + b;
 }
 
-void main() {
-    int input;
-    int count;
-    count = 0;
-
-    read(input);
-    input = input - 48; // Convert ASCII to integer
-
-    print_int(sq(input));
-
+int main() {
+    int result;
+    result = add(13, 7);
+    print_int(result);
+    return 0;
 }
