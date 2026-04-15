@@ -158,44 +158,13 @@ class SICGenerator:
             
         # --- Arithmetic ---
         elif op in ['+', '-', '*', '/']:
-            self.emit_code("LDA", self.get_operand(instr.arg1))
-            if op == '+': self.emit_code("ADD", self.get_operand(instr.arg2))
-            elif op == '-': self.emit_code("SUB", self.get_operand(instr.arg2))
-            elif op == '*': self.emit_code("MUL", self.get_operand(instr.arg2))
-            elif op == '/': self.emit_code("DIV", self.get_operand(instr.arg2))
-            self.emit_code("STA", instr.result)
+            pass
+            #implement this
             
         # --- Relational Operators ---
         elif op in ['==', '!=', '<', '<=', '>', '>=']:
-            t_lbl = f"TRUE_{self.cond_counter}"
-            e_lbl = f"END_{self.cond_counter}"
-            self.cond_counter += 1
-            
-            self.emit_code("LDA", self.get_operand(instr.arg1))
-            self.emit_code("COMP", self.get_operand(instr.arg2))
-            
-            if op == '==': 
-                self.emit_code("JEQ", t_lbl)
-            elif op == '!=': 
-                self.emit_code("JEQ", e_lbl)
-                self.emit_code("J", t_lbl)
-            elif op == '<': 
-                self.emit_code("JLT", t_lbl)
-            elif op == '>': 
-                self.emit_code("JGT", t_lbl)
-            elif op == '<=': 
-                self.emit_code("JLT", t_lbl)
-                self.emit_code("JEQ", t_lbl)
-            elif op == '>=': 
-                self.emit_code("JGT", t_lbl)
-                self.emit_code("JEQ", t_lbl)
-
-            self.emit_code("LDA", self.get_operand("0"))
-            self.emit_code("J", e_lbl)
-            self.pending_labels.append(t_lbl)
-            self.emit_code("LDA", self.get_operand("1"))
-            self.pending_labels.append(e_lbl)
-            self.emit_code("STA", instr.result)
+            pass
+            #implement this
 
         # --- Control Flow ---
         elif op == 'goto':
