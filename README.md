@@ -59,11 +59,14 @@ Then we **profile** (identify bottlenecks), and rewrite only the critical parts 
 ### Lab 8: Intermediate Code Generation
 * **Concepts:** Three-Address Code (TAC)
 * **Task:** Implement a code generator that traverses the AST and produces TAC
-* **Skills:** Tree Traversal and Code Generation
+* **Skills:** Tree Traversal and Maintenance of explicit stack for function calls and control flow.
+
+### Lab 9: SIC Assembly Generation
+* **Concepts:** Assembly Code Generation and Register Management
+* **Task:** Extend the TAC generation to produce SIC assembly code, managing registers and memory locations appropriately.
+* **Skills:** Simulating SIC Machine with generated assembly code.
 
 ## Roadmap
 
 
-### Lab 9: Optimization
-
-### Lab 10: Linker and Loader
+### Lab 10: Optimization
